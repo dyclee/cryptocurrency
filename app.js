@@ -1,11 +1,13 @@
 const express = require('express');
+const cors = require("cors");
 const rp = require('request-promise');
 
 require('dotenv').config();
 
 // Create the Express app.
 const app = express();
-
+app.use(express.json());
+app.use(cors());
 
 // Define routes.
 
@@ -15,7 +17,7 @@ app.get('/', (req, res) => {
     uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
     qs: {
       'start': '1',
-      'limit': '5000',
+      'limit': '30',
       'convert': 'USD'
     },
     headers: {
@@ -27,6 +29,9 @@ app.get('/', (req, res) => {
 
   rp(requestOptions).then(response => {
     console.log('API call response:', response);
+    res.status(200).json({
+      data: response
+    })
   }).catch((err) => {
     console.log('API call error:', err.message);
   });
