@@ -1,22 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    (async () => {
+      console.log("HIT")
+      let response = await fetch("http://localhost:3000/data", {
+        method: 'get',
+        // headers: { 'Content-Type': 'application/json' }
+      });
+      console.log("RESPONSE", response);
+      if (response.ok) {
+        const info = await response.json();
+        console.log("INFO", info);
+        setData(info.data);
+        return;
+      }
+    })()
+  }, [])
+
+  if (!data.status) return null;
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {data.data.map((crypto) => {
+          return (<>
+            <div>
+              {crypto.name}
+            </div>
+          </>)
+        })}
       </header>
     </div>
   );

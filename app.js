@@ -11,7 +11,7 @@ app.use(cors());
 
 // Define routes.
 
-app.get('/', (req, res) => {
+app.get('/data', (req, res) => {
   const requestOptions = {
     method: 'GET',
     uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
@@ -32,11 +32,12 @@ app.get('/', (req, res) => {
     res.status(200).json({
       data: response
     })
+    return;
   }).catch((err) => {
     console.log('API call error:', err.message);
+    res.send('Hello from Express!');
   });
 
-  res.send('Hello from Express!');
 });
 
 
