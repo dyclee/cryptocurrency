@@ -2,8 +2,10 @@ import React from 'react';
 
 export const CryptoDisplay = ({crypto}) => {
     return (<>
-        <div>
-            {crypto.name}
+        <div className="currency-container">
+            <div>
+                {crypto.name}
+            </div>
         </div>
     </>)
 }
