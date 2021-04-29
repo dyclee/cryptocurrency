@@ -28,13 +28,13 @@ app.get('/data', (req, res) => {
   };
 
   rp(requestOptions).then(response => {
-    console.log('API call response:', response);
+    // console.log('API call response:', response);
     res.status(200).json({
       data: response
     })
     return;
   }).catch((err) => {
-    console.log('API call error:', err.message);
+    // console.log('API call error:', err.message);
     res.send('Hello from Express!');
   });
 
