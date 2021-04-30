@@ -6,7 +6,7 @@ export const CryptoDisplay = ({crypto}) => {
     return (<>
         <div className="currency-container">
             <div className="currency-header">
-                {crypto.name}
+                {crypto.cmc_rank}. {crypto.name}
             </div>
             <div className="currency-abbrev">
                 ({crypto.symbol})
