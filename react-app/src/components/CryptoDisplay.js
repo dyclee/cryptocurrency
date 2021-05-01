@@ -1,4 +1,5 @@
 import React from 'react';
+import { DataDialog } from './DataDialog';
 
 export const CryptoDisplay = ({crypto}) => {
     let roundPrice = (crypto.quote.USD.price).toFixed(2);
@@ -25,6 +26,7 @@ export const CryptoDisplay = ({crypto}) => {
                 </div>
                 }
             </div>
+            <DataDialog crypto={crypto} />
         </div>
     </>)
 }

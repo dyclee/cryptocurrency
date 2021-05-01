@@ -19,6 +19,7 @@
   "homepage": "https://github.com/dyclee/cryptocurrency#readme",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
