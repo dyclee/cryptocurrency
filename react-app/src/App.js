@@ -30,13 +30,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <HomeDisplay data={data.data} />
-        {/* {data.data.map((crypto) => {
-          return (<>
-            <div>
-              {crypto.name}
-            </div>
-          </>)
-        })} */}
       </header>
     </div>
   );

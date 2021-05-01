@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require("cors");
 const rp = require('request-promise');
 
+const { asyncHandler } = require('./utils');
+
 require('dotenv').config();
 
 // Create the Express app.
@@ -26,6 +28,12 @@ app.get('/data', (req, res) => {
     json: true,
     gzip: true
   };
+
+  app.get('/data/:id(\\d+)', asyncHandler(async (req, res, next) => {
+    const dataObj = req.params.dataObj;
+    console.log("DATAOBJ", dataObj);
+
+  }))
 
   rp(requestOptions).then(response => {
     // console.log('API call response:', response);
